@@ -70,6 +70,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mToolbar.setTitle("状态显示");
         setSupportActionBar(mToolbar);
         mEmpty.bindView(mTv);
+
+        mEmpty.setOnRetryLisenter(new EmptyLayout.OnRetryLisenter() {
+            @Override
+            public void onRetry() {
+                mEmpty.showSuccess();
+            }
+        });
     }
 
     @Override

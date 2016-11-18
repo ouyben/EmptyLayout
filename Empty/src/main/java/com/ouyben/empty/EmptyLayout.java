@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 /**
  * 各种状态控制显示
  */
-public class EmptyLayout extends FrameLayout {
+public class EmptyLayout extends FrameLayout implements View.OnClickListener {
 
     private Context mContext;
     private View mEmptyView;// 空布局
@@ -18,6 +18,8 @@ public class EmptyLayout extends FrameLayout {
     private View mErrorView;// 加载错误
     private View mLoadingView;// 加载布局
     private View mNoNetwork;//无网络布局
+
+    private OnRetryLisenter mLisenter;
 
     public EmptyLayout(Context context) {
         this(context, null);
@@ -55,8 +57,14 @@ public class EmptyLayout extends FrameLayout {
         int noNetworkLayout = ta.getResourceId(R.styleable.EmptyLayout_elErrorLayout, R.layout.layout_not_network);
         mNoNetwork = View.inflate(context, noNetworkLayout, null);
         addView(mNoNetwork, params);
+
+        mEmptyView.setOnClickListener(this);
+        mErrorView.setOnClickListener(this);
+        mNoNetwork.setOnClickListener(this);
         //全部隐藏
         setGone();
+
+
     }
 
     /**
@@ -195,6 +203,21 @@ public class EmptyLayout extends FrameLayout {
         if (mBindView != null)
             mBindView.setVisibility(View.VISIBLE);
         setGone();
+    }
+
+    public void setOnRetryLisenter(OnRetryLisenter lisenter) {
+        mLisenter = lisenter;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (mLisenter != null) {
+            mLisenter.onRetry();
+        }
+    }
+
+    public interface OnRetryLisenter {
+        void onRetry();
     }
 
 }
