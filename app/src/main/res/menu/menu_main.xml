@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.ouyben.emptylayout.MainActivity">
+    <item
+        android:id="@+id/action_load"
+        android:orderInCategory="100"
+        android:title="加载中"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_error"
+        android:orderInCategory="100"
+        android:title="加载错误"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_no_data"
+        android:orderInCategory="100"
+        android:title="无数据"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_no_net"
+        android:orderInCategory="100"
+        android:title="无网络"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sucess"
+        android:orderInCategory="100"
+        android:title="成功"
+        app:showAsAction="never"/>
+</menu>
